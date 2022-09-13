@@ -1,0 +1,17 @@
+{
+  "name": "precommit-prettier-write",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5"
+  }
+}
