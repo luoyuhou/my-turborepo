@@ -40,7 +40,17 @@ const prettierWriteFile = (files) => {
     shell.exit(1);
   }
 
-  shell.echo(`Success, ${output.stdout}`);
+  shell.echo(`Prettier Success, ${output.stdout}`);
+}
+
+const stageCode = () => {
+  const output = shell.exec("git stash");
+  if (output.code) {
+    shell.echo(`Error, ${output.stderr}`);
+    shell.exit(1);
+  }
+
+  shell.echo(`Stash Success, ${output.stdout}`);
 }
 
 const main = () => {
@@ -60,6 +70,8 @@ const main = () => {
     shell.echo(`Error, files array is empty`);
     shell.exit(1);
   }
+
+  stageCode();
 
   prettierWriteFile(files);
   shell.echo(`Finish..., len = ${files.length}`);
