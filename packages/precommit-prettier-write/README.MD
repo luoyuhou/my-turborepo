@@ -1,4 +1,4 @@
-# ppd
+# ppw
 
 #### Execute `ppw` to select files whose type is modified, and divide the code of prettier and change into two submissions, reducing the workload of code reviewers.
 
