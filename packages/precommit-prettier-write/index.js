@@ -29,12 +29,14 @@ const filterFiles = (stdout) => {
 }
 
 const prettierWriteFile = (files) => {
-  if (!shell.which("prettier")) {
+  const prettier = shell.exec("npx prettier -v");
+  if (prettier.code) {
     shell.echo('Error, this script requires prettier');
     shell.exit(1);
   }
+  shell.echo(`Prettier, Version $${prettier.stdout}`)
 
-  const output = shell.exec(`prettier --write ${files.join(" ")}`);
+  const output = shell.exec(`npx prettier --write ${files.join(" ")}`);
   if (output.code) {
     shell.echo(`Error, ${output.stderr}`);
     shell.exit(1);
@@ -77,4 +79,4 @@ const main = () => {
   shell.echo(`Finish..., len = ${files.length}`);
 }
 
-main();
+module.exports = main;
